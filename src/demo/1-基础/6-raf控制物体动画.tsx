@@ -2,7 +2,7 @@
  * @Author: 毛毛
  * @Date: 2023-01-02 14:48:46
  * @Last Modified by: 毛毛
- * @Last Modified time: 2023-01-02 15:36:46
+ * @Last Modified time: 2023-01-02 15:37:28
  * TODO 设置物体的缩放 scale 物体旋转 rotation
  */
 import { useEffect, useRef } from "react";
