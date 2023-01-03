@@ -2,12 +2,12 @@
  * @Author: 毛毛
  * @Date: 2023-01-03 18:33:51
  * @Last Modified by: 毛毛
- * @Last Modified time: 2023-01-03 18:47:44
- * clock 跟踪时间处理动画
+ * @Last Modified time: 2023-01-03 19:09:20
+ * 动画库 gsap
  */
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-
+import gsap from "gsap";
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -40,23 +40,38 @@ scene.add(axesHelper);
 // 创建轨道控制器  相机围绕着轨道看这个3d的物体
 const controls = new OrbitControls(camera, renderer.domElement);
 
-// TODO clock 设置时钟
-const clock = new THREE.Clock(true); // 默认是true 第一次update的时候开启时钟
-// clock.autoStart
-// clock.startTime  存储时钟最后一次调用start方法的时间
-// clock.oldTime 存储时钟最后一次调用 start getElapsedTime getDelta 方法的时间
 // 渲染函数
+// 设置动画
+gsap.to(cube.position, {
+  x: 5,
+  duration: 5,
+  onComplete() {
+    // 完成该动画以后的回调函数
+    console.log("position 动画完成");
+  },
+  onStart() {
+    console.log("动画开始 ... position");
+  },
+  yoyo: true, // 设置往返运动
+  repeat: Infinity, // 重复次数
+  // 延迟运动 时间
+  delay: 2, 
+});
+const animate = gsap.to(cube.rotation, {
+  x: 2 * Math.PI,
+  duration: 5,
+  ease: "power1.inOut",
+  repeat: Infinity, // 重复次数
+});
 const render = (time: DOMHighResTimeStamp) => {
-  const deltaTime = clock.getDelta(); // 获取自上次调用此方法以来传递的秒数。
-  time = clock.getElapsedTime(); // 获取时钟运行的总时长
-  console.log("时钟运行的总时长：", time);
-  console.log("两次获取时间的间隔时间：", deltaTime);
-  const t = time % 5;
-  cube.position.x = t * 1;
-  if (cube.position.x >= 5) cube.position.x = 0;
-  // 每一帧都渲染一次
   renderer.render(scene, camera);
   requestAnimationFrame(render);
 };
 render(performance.now());
+
+window.addEventListener('dblclick', () => {
+  // TODO 双击的时候 暂停旋转动画
+  console.log(animate.isActive())
+  animate.isActive() ? animate.pause() : animate.resume() // 恢复动画
+})
 export default renderer;

@@ -2,11 +2,11 @@
  * @Author: 毛毛
  * @Date: 2023-01-02 14:48:46
  * @Last Modified by: 毛毛
- * @Last Modified time: 2023-01-02 15:37:28
+ * @Last Modified time: 2023-01-03 18:52:41
  * TODO 设置物体的缩放 scale 物体旋转 rotation
  */
 import { useEffect, useRef } from "react";
-import renderer from "./demo/1-基础/7-Clock跟踪时间处理动画";
+import renderer from "./demo/1-基础/8-gsap动画库做动画";
 import "./App.css";
 // 使用控制器 查看3d物体
 // 导入轨道控制器
