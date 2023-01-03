@@ -2,8 +2,8 @@
  * @Author: 毛毛
  * @Date: 2023-01-03 18:33:51
  * @Last Modified by: 毛毛
- * @Last Modified time: 2023-01-03 22:36:29
- * 动画库 gsap
+ * @Last Modified time: 2023-01-03 23:47:09
+ * 页面全屏 退出全屏效果
  */
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -39,6 +39,8 @@ scene.add(axesHelper);
 
 // 创建轨道控制器  相机围绕着轨道看这个3d的物体
 const controls = new OrbitControls(camera, renderer.domElement);
+// TODO 设置阻尼 让控制器更有真实的效果 有惯性效果的展示
+controls.enableDamping = true;
 
 // 渲染函数
 // 设置动画
@@ -55,7 +57,7 @@ gsap.to(cube.position, {
   yoyo: true, // 设置往返运动
   repeat: Infinity, // 重复次数
   // 延迟运动 时间
-  delay: 2, 
+  delay: 2,
 });
 const animate = gsap.to(cube.rotation, {
   x: 2 * Math.PI,
@@ -66,12 +68,32 @@ const animate = gsap.to(cube.rotation, {
 const render = (time: DOMHighResTimeStamp) => {
   renderer.render(scene, camera);
   requestAnimationFrame(render);
+  // TODO 设置update方法 才能实现阻尼效果
+  controls.update();
 };
 render(performance.now());
 
-window.addEventListener('dblclick', () => {
-  // TODO 双击的时候 暂停旋转动画
-  console.log(animate.isActive())
-  animate.isActive() ? animate.pause() : animate.resume() // 恢复动画
-})
+window.addEventListener("dblclick", () => {
+  // TODO 双击控制屏幕进入全屏 退出全屏 requestFullscreen
+  // renderer.domElement.requestFullscreen()
+  // 通过 document.fullscreenElement 可以获取全局的全屏元素
+  if (document.fullscreenElement == null) {
+    // 每一个元素（比如当前画布）都可以请求全屏
+    renderer.domElement.requestFullscreen();
+  } else {
+    // 退出全屏
+    document.exitFullscreen();
+  }
+});
+// 监听页面大小的变化 大小变化重新渲染
+addEventListener("resize", () => {
+  // 更新摄像头 宽高比
+  camera.aspect = window.innerWidth / window.innerHeight;
+  // 更新摄像机的投影矩阵
+  camera.updateProjectionMatrix();
+  // 更新渲染器
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  // 设置渲染器的像素比
+  renderer.setPixelRatio(window.devicePixelRatio);
+});
 export default renderer;
