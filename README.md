@@ -13,3 +13,6 @@ Orbit controls（轨道控制器）可以使得相机围绕目标进行轨道运
 ## AxesHelper
 坐标轴辅助器，用于简单模拟3个坐标轴的对象
 红色X轴，绿色Y轴，蓝色Z轴
+
+## Clock
+该对象用于跟踪时间。如果performance.now可用，则clock对象通过该方法实现，否则使用欠精度的Date.now来实现
