@@ -2,11 +2,11 @@
  * @Author: 毛毛
  * @Date: 2023-01-02 14:48:46
  * @Last Modified by: 毛毛
- * @Last Modified time: 2023-01-03 23:37:10
+ * @Last Modified time: 2023-01-04 23:21:09
  * TODO 设置物体的缩放 scale 物体旋转 rotation
  */
 import { useEffect, useRef } from "react";
-import renderer from "./demo/1-基础/10-js控制是否全屏和退出全屏";
+import renderer from "./demo/1-基础/11-使用gui工具快速调试图形参数";
 import "./App.css";
 // 使用控制器 查看3d物体
 // 导入轨道控制器
