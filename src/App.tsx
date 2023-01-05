@@ -6,7 +6,7 @@
  * TODO 设置物体的缩放 scale 物体旋转 rotation
  */
 import { useEffect, useRef } from "react";
-import renderer from "./demo/1-基础/11-使用gui工具快速调试图形参数";
+import renderer from "./demo/1-基础/14-酷炫的三角形";
 import "./App.css";
 // 使用控制器 查看3d物体
 // 导入轨道控制器
