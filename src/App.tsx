@@ -6,7 +6,7 @@
  * TODO 设置物体的缩放 scale 物体旋转 rotation
  */
 import { useEffect, useRef } from "react";
-import renderer from "./demo/1-基础/21-置换贴图与顶点细分";
+import renderer from "./demo/1-基础/24-法线贴图";
 import "./App.css";
 // 使用控制器 查看3d物体
 // 导入轨道控制器
@@ -15,6 +15,9 @@ function App() {
   const canvasRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     canvasRef.current?.appendChild(renderer.domElement);
+    return () => {
+      canvasRef.current?.removeChild(renderer.domElement)
+    }
   });
   return <div ref={canvasRef}></div>;
 }

@@ -39,3 +39,10 @@ normal就是法向属性，position里面有顶点信息。
 
 ### BufferGeometry
 面片、线或点几何体的有效表述。包括顶点位置，面片索引、法相量、颜色值、UV 坐标和自定义缓存属性值。使用 BufferGeometry 可以有效减少向 GPU 传输上述数据所需的开销。
+
+## 贴图网站
+1. https://www.poliigon.com/
+2. https://3dtextures.me/
+3. https://www.arroway-textures.ch/
+
+注册一个虚幻引擎账号：quixel bridge
