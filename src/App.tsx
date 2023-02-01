@@ -6,7 +6,7 @@
  * TODO 设置物体的缩放 scale 物体旋转 rotation
  */
 import { useEffect, useRef } from "react";
-import renderer from "./demo/1-基础/28-加载hdr图";
+import renderer from "./demo/2-灯光和阴影/2-平行光阴影属性与阴影相机原理";
 import "./App.css";
 // 使用控制器 查看3d物体
 // 导入轨道控制器
