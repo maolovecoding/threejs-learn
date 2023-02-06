@@ -6,7 +6,7 @@
  * TODO 设置物体的缩放 scale 物体旋转 rotation
  */
 import { useEffect, useRef } from "react";
-import renderer from "./demo/4-光线投射与物体交互/1-投射光线和物体交互";
+import renderer from "./demo/5-全屏滚动demo/1-demo";
 import "./App.css";
 // 使用控制器 查看3d物体
 // 导入轨道控制器
