@@ -2,14 +2,12 @@
  * @Author: 毛毛
  * @Date: 2023-01-02 14:48:46
  * @Last Modified by: 毛毛
- * @Last Modified time: 2023-01-19 19:53:40
+ * @Last Modified time: 2023-02-09 15:07:11
  * TODO 设置物体的缩放 scale 物体旋转 rotation
  */
 import { useEffect, useRef } from "react";
-import renderer from "./demo/5-全屏滚动demo/1-demo";
+import renderer from "./demo/6-物理引型/6-给物体添加力"
 import "./App.css";
-// 使用控制器 查看3d物体
-// 导入轨道控制器
 function App() {
   // 将webgl渲染的canvas添加到页面上
   const canvasRef = useRef<HTMLDivElement>(null);
@@ -19,7 +17,8 @@ function App() {
       canvasRef.current?.removeChild(renderer.domElement)
     }
   });
-  return <div ref={canvasRef}></div>;
+  return <div className="threejs-container" ref={canvasRef}></div>;
 }
+
 
 export default App;
